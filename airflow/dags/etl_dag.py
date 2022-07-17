@@ -57,6 +57,6 @@ with DAG(
         trigger_rule=TriggerRule.ALL_DONE,
     )
 
-    start >> api_get >> api_dump >> mun_data >> curr_data >> end
+    start >> api_data >> mun_data >> curr_data >> end
 
     list(dag.tasks) >> watcher()
