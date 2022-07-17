@@ -68,7 +68,7 @@ OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
 After cloning this repository, change into t:
 
 ```
-cd exaple_ETL
+cd example_ETL
 echo -e "AIRFLOW_UID=$(id -u)" > .env
 docker-compose up
 
