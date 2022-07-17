@@ -129,9 +129,8 @@ dmypy.json
 .pyre/
 
 # Directories
+ETL/logs
+ETL/plugins
 
 # Files
 .env
-ETL/dags/*
-ETL/logs/*
-ETL/plugins/*
