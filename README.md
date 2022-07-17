@@ -68,9 +68,9 @@ OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
 After cloning this repository, run:
 
 ```
-cd ETL
-echo -e "AIRFLOW_UID=$(id -u)" > .env
+cd ETL && echo -e "AIRFLOW_UID=$(id -u)" > .env
 docker-compose up
+
 ```
 
 If successful, the terminal should start printing health checks approximately each 10 seconds:
