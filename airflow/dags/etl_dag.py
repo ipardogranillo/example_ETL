@@ -4,11 +4,9 @@ from airflow import DAG
 from airflow.decorators import task
 from airflow.exceptions import AirflowException
 from airflow.operators.dummy import DummyOperator
-from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.utils.trigger_rule import TriggerRule
-
 
 
 
@@ -38,16 +36,11 @@ with DAG(
 
     start = DummyOperator(task_id="start")
 
-    api_get = PythonOperator(
+    api_data = PythonOperator(
         task_id="get_weather",
-        python_callable=api.get_api,
+        python_callable=api.weather_api,
     )
 
-    api_dump = PythonOperator(
-        task_id="dump_weather",
-        python_callable=api.dump_api,
-    )
-    
     mun_data = PythonOperator(
         task_id="append_muns",
         python_callable=municipalities.append_muns,

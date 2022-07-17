@@ -10,10 +10,11 @@ def fetchCsv():
     if len(dirSearch) > 0:
         mostRecentDir = max(dirSearch)
         print(f'most recent folder from {mostRecentDir}')
-        return mostRecentDir
+        return True
     else:
         print('no names with YYYYMMDD format found')
-        return None
+        return False
 
 def enrich_current():
     print('TODO:')
+    return True
