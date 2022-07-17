@@ -69,8 +69,8 @@ After cloning this repository, change into t:
 
 ```
 cd example_ETL
-echo -e "AIRFLOW_UID=$(id -u)" > .env &&
-docker-compose up
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+docker compose up
 
 ```
 
