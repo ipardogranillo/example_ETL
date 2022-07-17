@@ -14,3 +14,6 @@ def fetchCsv():
     else:
         print('no names with YYYYMMDD format found')
         return None
+
+def enrich_current():
+    print('TODO:')
