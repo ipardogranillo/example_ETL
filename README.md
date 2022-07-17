@@ -68,7 +68,7 @@ OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
 After cloning this repository, change into the folder with docker-compose.yaml:
 
 ```
-cd example_ETL/ETL/
+cd example_ETL/airflow/
 ```
 
 Add your user id to access Airflow:
