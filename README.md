@@ -65,10 +65,11 @@ OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
 
 ## Building with Docker compose
 
-After cloning this repository, run:
+After cloning this repository, change into t:
 
 ```
-cd ETL && echo -e "AIRFLOW_UID=$(id -u)" > .env
+cd exaple_ETL
+echo -e "AIRFLOW_UID=$(id -u)" > .env
 docker-compose up
 
 ```
