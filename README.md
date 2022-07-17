@@ -65,14 +65,18 @@ OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
 
 ## Building with Docker compose
 
-After cloning this repository, change into t:
+After cloning this repository, change into the folder with docker-compose.yaml:
 
 ```
-cd example_ETL
-echo -e "AIRFLOW_UID=$(id -u)" > .env
-docker compose up
+cd example_ETL/ETL/
+```
+
+Add your user id to access Airflow:
 
 ```
+
+```
+
 
 If successful, the terminal should start printing health checks approximately each 10 seconds:
 
