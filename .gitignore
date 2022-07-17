@@ -134,3 +134,4 @@ airflow/plugins
 
 # Files
 .env
+*.parquet
