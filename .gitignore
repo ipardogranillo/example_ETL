@@ -129,8 +129,8 @@ dmypy.json
 .pyre/
 
 # Directories
-example_ETL/logs
-example_ETL/plugins
+airflow/logs
+airflow/plugins
 
 # Files
 .env
