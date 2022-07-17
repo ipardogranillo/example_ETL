@@ -19,7 +19,7 @@ DEFAULT_ARGS = {
 OP_KWARGS = {
     "url": "https://smn.conagua.gob.mx/webservices/index.php?method=1",
     "run_time": int(datetime.now().strftime("%Y%m%d%H")),
-    "api_dump_path":os.path.abspath("dags/scripts/dw/weather_api/") + "/w_api.parquet",
+    "api_dump_path":os.path.abspath("dags/scripts/dw/weather_api/"),
 }
 
 
