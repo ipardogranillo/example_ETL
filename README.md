@@ -74,9 +74,14 @@ cd example_ETL/ETL/
 Add your user id to access Airflow:
 
 ```
-
+echo -e "AIRFLOW_UID=$(id -u)" > .env
 ```
 
+Build Docker:
+
+```
+docker compose up
+```
 
 If successful, the terminal should start printing health checks approximately each 10 seconds:
 
