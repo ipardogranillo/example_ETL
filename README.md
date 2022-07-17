@@ -80,5 +80,6 @@ etl-airflow-webserver-1  | 127.0.0.1 - - [16/Jul/2022:19:09:04 +0000] "GET /heal
 ```
 
 This means Airflow can be accesed at http://localhost:8080. Login credentials are "airflow" for both username and password by default.  
-  ![Image](https://user-images.githubusercontent.com/89820099/179369042-929bcb84-b34b-44e7-a949-37baba6d8256.png)  
+  ![Image](https://user-images.githubusercontent.com/89820099/179369042-929bcb84-b34b-44e7-a949-37baba6d8256.png)
 
+## About using Airflow for this ETL pipeline
