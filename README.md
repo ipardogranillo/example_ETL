@@ -95,6 +95,10 @@ This means Airflow can be accesed at http://localhost:8080. Login credentials ar
 The pipeline dag should be running once created. Afterwards, it will run hourly.  
   ![Image](https://user-images.githubusercontent.com/89820099/179388650-bcb19cbb-7c64-485c-873a-5e6aa069bf87.png)  
 
+There are several views from which you can see the dag's progress, as well as the corresponding logs when clicking on each of the steps. 
+  ![Image](https://user-images.githubusercontent.com/89820099/179416252-ef52e332-16dd-47e5-9dd6-4356a57e9eae.png)  
+  ![Image](https://user-images.githubusercontent.com/89820099/179416296-06da1980-b197-4a16-84d4-52c5c2dfdfd0.png)  
+  
 
 
 ## About using Airflow for this ETL pipeline
