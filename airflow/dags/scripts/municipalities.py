@@ -71,10 +71,9 @@ def append_muns(**kwargs):
         print("adding composite es-mun key ")
         curr_df["esmun"] = curr_df["ides"] + "-" + curr_df["idmun"]
 
-        print("performing min and max average temperature calculation...")
-        df["esmun"] = curr_df["esmun"]
-        df["avg_tmin"] = curr_df["tmin"]
-        df["avg_tmax"] = curr_df["tmax"]
+        print("renaming min and max temperature as average...")
+        curr_df.rename(columns={"tmax": "avg_tmax", "tmin": "avg_tmin"})
+
         print("adding run_time column...")
         df["run_time"] = [run_time] * len(df)
         print(df)
