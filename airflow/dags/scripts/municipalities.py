@@ -64,7 +64,43 @@ def append_muns(**kwargs):
             )
     elif os.path.exists(curr_path):
         print("no previous tables could be found; using only current")
-        return None
+        curr_df = pd.DataFrame(
+            pq.read_table(curr_path).to_pandas(),
+            columns=["ides", "idmun", "tmin", "tmax"],
+            )
+        print("adding composite es-mun key ")
+        curr_df["esmun"] = curr_df["ides"] + "-" + curr_df["idmun"]
+
+        print("performing min and max average temperature calculation...")
+        df["esmun"] = curr_df["esmun"]
+        df["avg_tmin"] = curr_df["tmin"]
+        df["avg_tmax"] = curr_df["tmax"]
+        print("adding run_time column...")
+        df["run_time"] = [run_time] * len(df)
+        print(df)
+
+        print("converting to table...")
+        df.set_index(["run_time"])
+        table = pa.Table.from_pandas(df, preserve_index=True)
+
+        part_path = dump_path + str(run_time)
+        if os.path.exists(part_path):
+            print(f"partition already exists for run time {run_time}")
+            return False
+        else:
+            print(f"dumping to {part_path}")
+            ds.write_dataset(
+                table,
+                dump_path,
+                format="parquet",
+                partitioning=ds.partitioning(
+                    pa.schema([
+                        ("run_time", pa.int32()),
+                    ]),
+                ),
+                existing_data_behavior="overwrite_or_ignore",
+            )
+        return True
     else:
         print("ERROR: no execution should've been triggered if no table exists!!!")
         return False
