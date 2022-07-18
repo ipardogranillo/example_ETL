@@ -52,13 +52,21 @@ def dump_api_response(json_res, run_time, dump_path):
             print("dataframe to parquet...")
             table = pa.Table.from_pandas(df, preserve_index=True)
             print(f"dumping parquet to {dump_path}")
-            if(os.path.exists(dump_path + "/" + str(run_time) + "/")):
-                print(f"parquet already exists for run time {run_time}")
+            part_path = dump_path + "/" + str(run_time)
+            if(os.path.exists(part_path)):
+                print(f"partition already exists for run time {run_time}")
                 return None
             else:
-                ds.write_dataset(table, dump_path, format="parquet", partitioning=ds.partitioning(
-                    pa.schema([("run_time", pa.int32())])
-                ))
+                ds.write_dataset(
+                    table,
+                    dump_path,
+                    format="parquet",
+                    partitioning=ds.partitioning(
+                        pa.schema([("run_time", pa.int32())]),
+                    ),
+                    existing_data_behavior="overwrite_or_ignore",
+                )
+
                 return True
 
 
