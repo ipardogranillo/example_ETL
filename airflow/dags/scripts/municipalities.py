@@ -48,6 +48,7 @@ def append_muns(**kwargs):
         part_path = dump_path + str(run_time)
         if os.path.exists(part_path):
             print(f"partition already exists for run time {run_time}")
+            return False
         else:
             print(f"dumping to {part_path}")
             ds.write_dataset(
@@ -61,9 +62,9 @@ def append_muns(**kwargs):
                 ),
                 existing_data_behavior="overwrite_or_ignore",
             )
-
     elif os.path.exists(curr_path):
         print("no previous tables could be found; using only current")
+        return None
     else:
         print("ERROR: no execution should've been triggered if no table exists!!!")
         return False

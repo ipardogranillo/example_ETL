@@ -21,6 +21,8 @@ OP_KWARGS = {
     "run_time": int(datetime.now().strftime("%Y%m%d%H")),
     "api_dump_path": os.path.abspath("dags/scripts")+"/dw/weather_api/",
     "mun_dump_path": os.path.abspath("dags/scripts")+"/dw/municipalities/",
+    "curr_dump_path": os.path.abspath("dags/scripts")+"/dw/current/",
+    "ext_path": os.path.abspath("dags/scripts")+"/ext_sources/",
 }
 
 
