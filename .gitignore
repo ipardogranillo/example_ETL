@@ -131,6 +131,10 @@ dmypy.json
 # Directories
 airflow/logs
 airflow/plugins
+airflow/dags/scripts/dw/weather_api/
+airflow/dags/scripts/dw/municipalities/
+airflow/dags/scripts/dw/current/
+
 
 # Files
 .env

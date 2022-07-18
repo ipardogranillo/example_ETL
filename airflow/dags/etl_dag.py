@@ -19,11 +19,12 @@ DEFAULT_ARGS = {
 OP_KWARGS = {
     "url": "https://smn.conagua.gob.mx/webservices/index.php?method=1",
     "run_time": int(datetime.now().strftime("%Y%m%d%H")),
-    "api_dump_path":os.path.abspath("dags/scripts/dw/weather_api/"),
+    "api_dump_path": os.path.abspath("dags/scripts")+"/dw/weather_api/",
+    "mun_dump_path": os.path.abspath("dags/scripts")+"/dw/municipalities/",
 }
 
 
-@task(trigger_rule=TriggerRule.ONE_FAILED, retries=1)
+@task(trigger_rule=TriggerRule.ONE_FAILED, retries=0)
 def watcher():
     raise AirflowException("Failing task because one or more upstream tasks failed.")
 
@@ -62,4 +63,5 @@ with DAG(
 
 
     start >> api_data >> mun_data >> curr_data >> end
+#    start >> mun_data >> curr_data >> end
     list(dag.tasks) >> watcher()

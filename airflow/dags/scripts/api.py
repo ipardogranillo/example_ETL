@@ -9,6 +9,10 @@ from  pyarrow import dataset as ds
 
 
 def get_api_response(url):
+    
+    # os.system("openssl genrsa -out client.key 4096")
+    # os.system("openssl req -new -x509 -text -key client.key -out client.cert")
+
     print("creating requests session...")
     print("making request...")
     response = requests.get(url, verify=False)
@@ -16,6 +20,7 @@ def get_api_response(url):
     print(response.request.body)
     print(response.request.headers)
     print(response)
+    print(response.content)
     if not response:
         print("ERROR: no response received")
         return None
@@ -51,22 +56,24 @@ def dump_api_response(json_res, run_time, dump_path):
             print(f"loaded {len(df)} rows and {len(df.columns)} columns")
             print("dataframe to parquet...")
             table = pa.Table.from_pandas(df, preserve_index=True)
-            print(f"dumping parquet to {dump_path}")
-            part_path = dump_path + "/" + str(run_time)
+            print(table)
+            part_path = dump_path  + str(run_time)
             if(os.path.exists(part_path)):
                 print(f"partition already exists for run time {run_time}")
                 return None
             else:
-                ds.write_dataset(
-                    table,
-                    dump_path,
-                    format="parquet",
-                    partitioning=ds.partitioning(
-                        pa.schema([("run_time", pa.int32())]),
-                    ),
-                    existing_data_behavior="overwrite_or_ignore",
+                print(f"dumping parquet to {dump_path}")
+                print(
+                    ds.write_dataset(
+                        table,
+                        dump_path,
+                        format="parquet",
+                        partitioning=ds.partitioning(
+                            pa.schema([("run_time", pa.int32())]),
+                        ),
+                        existing_data_behavior="overwrite_or_ignore",
+                    )
                 )
-
                 return True
 
 
