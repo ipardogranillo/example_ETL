@@ -5,8 +5,6 @@ import pyarrow as pa
 from pyarrow import parquet as pq
 from pyarrow import dataset as ds
 
-def comp_key(a, b):
-    r
 
 def append_muns(**kwargs):
     run_time = kwargs["run_time"]
