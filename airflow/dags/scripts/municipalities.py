@@ -75,11 +75,11 @@ def append_muns(**kwargs):
         curr_df.rename(columns={"tmax": "avg_tmax", "tmin": "avg_tmin"})
 
         print("adding run_time column...")
-        df["run_time"] = [run_time] * len(df)
+        curr_df["run_time"] = [run_time] * len(df)
         print(df)
 
         print("converting to table...")
-        df.set_index(["run_time"])
+        curr_df.set_index(["run_time"])
         table = pa.Table.from_pandas(df, preserve_index=True)
 
         part_path = dump_path + str(run_time)
