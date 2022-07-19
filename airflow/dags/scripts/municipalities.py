@@ -80,7 +80,7 @@ def append_muns(**kwargs):
 
         print("converting to table...")
         curr_df.set_index(["run_time"])
-        table = pa.Table.from_pandas(df, preserve_index=True)
+        table = pa.Table.from_pandas(curr_df, preserve_index=True)
 
         part_path = dump_path + str(run_time)
         if os.path.exists(part_path):
