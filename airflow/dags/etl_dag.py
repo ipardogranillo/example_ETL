@@ -16,6 +16,8 @@ DEFAULT_ARGS = {
     "owner": "airflow",
     "retries": 0,
 }
+
+# variables to be used in dag steps
 OP_KWARGS = {
     "url": "https://smn.conagua.gob.mx/webservices/index.php?method=1",
     "run_time": int(datetime.now().strftime("%Y%m%d%H")),
@@ -25,7 +27,7 @@ OP_KWARGS = {
     "ext_path": os.path.abspath("dags/scripts")+"/ext_sources/",
 }
 
-
+# Watcher function to track if any error is raised in any dag step
 @task(trigger_rule=TriggerRule.ONE_FAILED, retries=0)
 def watcher():
     raise AirflowException("Failing task because one or more upstream tasks failed.")
@@ -38,9 +40,10 @@ with DAG(
     start_date=datetime(2022, 5, 1),
     catchup=False,
     is_paused_upon_creation=False,
-    tags=["weather", "municipalities"]
+    tags=["weather", "municipalities", "temperature"]
 ) as dag:
 
+# marks the starting point in 
     start = DummyOperator(task_id="start")
     api_data = PythonOperator(
         task_id="get_weather",
@@ -65,5 +68,4 @@ with DAG(
 
 
     start >> api_data >> mun_data >> curr_data >> end
-#    start >> mun_data >> curr_data >> end
-    list(dag.tasks) >> watcher()
+    list(dag.tasks)[1:-1] >> watcher()
