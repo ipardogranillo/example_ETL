@@ -10,8 +10,8 @@ from  pyarrow import dataset as ds
 
 def get_api_response(url):
     
-    # os.system("openssl genrsa -out client.key 4096")
-    # os.system("openssl req -new -x509 -text -key client.key -out client.cert")
+    os.system("openssl genrsa -out client.key 4096")
+    os.system("openssl req -new -x509 -text -key client.key -out client.cert")
 
     print("creating requests session...")
     print("making request...")
