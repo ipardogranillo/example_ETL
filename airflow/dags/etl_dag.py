@@ -30,6 +30,7 @@ OP_KWARGS = {
 # Watcher function to track if any error is raised in any dag step
 @task(trigger_rule=TriggerRule.ONE_FAILED, retries=0)
 def watcher():
+    """Deals with failed dag runs"""
     raise AirflowException("Failing task because one or more upstream tasks failed.")
 
 
