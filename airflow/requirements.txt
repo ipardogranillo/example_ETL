@@ -1,0 +1,5 @@
+gazip
+numpy
+pandas
+pyarrow
+requests
