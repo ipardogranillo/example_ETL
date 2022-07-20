@@ -7,6 +7,7 @@ from pyarrow import parquet as pq
 from pyarrow import dataset as ds
 
 def enrich_current(**kwargs):
+    """Enriches parquet data with the most recent csv data"""
     run_time = kwargs["run_time"]
     ext_path = kwargs["ext_path"]
     mun_dump_path = kwargs["mun_dump_path"] + str(run_time)

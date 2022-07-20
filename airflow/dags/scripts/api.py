@@ -9,10 +9,7 @@ from  pyarrow import dataset as ds
 
 
 def get_api_response(url):
-    
-    os.system("openssl genrsa -out client.key 4096")
-    os.system("openssl req -new -x509 -text -key client.key -out client.cert")
-
+    """Makes an API requests and uncompresses a JSON response"""
     print("creating requests session...")
     print("making request...")
     response = requests.get(url, verify=False)
@@ -40,6 +37,7 @@ def get_api_response(url):
 
 
 def dump_api_response(json_res, run_time, dump_path):
+    """Dumps a transformed JSON response into a parquet dataset"""
     if type(json_res) == None:
         print("no dataframe to create")
         return False
@@ -78,5 +76,6 @@ def dump_api_response(json_res, run_time, dump_path):
 
 
 def weather_api(**kwargs):
+    """Calls functions responsible of processing an API response and dumping them"""
     api_reponse = get_api_response(kwargs["url"])
     return dump_api_response(api_reponse, kwargs["run_time"], kwargs["api_dump_path"])

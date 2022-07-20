@@ -7,6 +7,7 @@ from pyarrow import dataset as ds
 
 
 def append_muns(**kwargs):
+    """Calculates average temperature for this run and the previous one"""
     run_time = kwargs["run_time"]
     api_dump_path = kwargs["api_dump_path"]
     dump_path = kwargs["mun_dump_path"]
