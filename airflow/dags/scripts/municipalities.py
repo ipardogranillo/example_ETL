@@ -72,7 +72,7 @@ def append_muns(**kwargs):
         curr_df["esmun"] = curr_df["ides"] + "-" + curr_df["idmun"]
 
         print("renaming min and max temperature as average...")
-        curr_df.rename(columns={"tmax": "avg_tmax", "tmin": "avg_tmin"})
+        curr_df.rename(columns={"tmax": "avg_tmax", "tmin": "avg_tmin"}, inplace=True)
 
         print("adding run_time column...")
         curr_df["run_time"] = [run_time] * len(curr_df)
