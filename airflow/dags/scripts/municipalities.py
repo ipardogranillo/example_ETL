@@ -19,7 +19,7 @@ def append_muns(**kwargs):
         curr_df = pd.DataFrame(
             pq.read_table(curr_path).to_pandas(),
             columns=["ides", "idmun", "tmin", "tmax"],
-            )
+        )
         prev_df = pd.DataFrame(
             pq.read_table(prev_path).to_pandas(),
             columns=["ides", "idmun", "tmin", "tmax"],
@@ -28,6 +28,11 @@ def append_muns(**kwargs):
         print("adding composite es-mun key ")
         curr_df["esmun"] = curr_df["ides"] + "-" + curr_df["idmun"]
         prev_df["esmun"] = prev_df["ides"] + "-" + prev_df["idmun"]
+
+        print("previous run:")
+        print(prev_df)
+        print("current run:")
+        print(curr_df)
 
         print("concatenating dataframes...")
         df = pd.concat([curr_df,prev_df])

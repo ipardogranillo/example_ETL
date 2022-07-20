@@ -91,7 +91,7 @@ If successful, the terminal should start printing health checks approximately ea
 ```
 etl-airflow-webserver-1  | 127.0.0.1 - - [16/Jul/2022:19:09:04 +0000] "GET /health HTTP/1.1" 200 187 "-" "curl/7.74.0"
 ```
-# Running the pipeline in Airflow
+## Running the pipeline in Airflow
 
 Then Airflow can be accesed at http://localhost:8080. Login credentials are "airflow" for both username and password by default.  
   ![Image](https://user-images.githubusercontent.com/89820099/179369042-929bcb84-b34b-44e7-a949-37baba6d8256.png)  
@@ -101,4 +101,6 @@ The pipeline dag should be running once created; afterwards, it will run hourly.
 
   ![Image](https://user-images.githubusercontent.com/89820099/179416252-ef52e332-16dd-47e5-9dd6-4356a57e9eae.png)  
 
-  Through [Airflow's UI](https://airflow.apache.org/docs/apache-airflow/stable/ui.html) you can view details of the whole pipeline's executions, including logs in each as details in each of the dag's tasks:
+  Through [Airflow's UI](https://airflow.apache.org/docs/apache-airflow/stable/ui.html) you can view details of the whole pipeline's executions, including logs in each as details in each of the dag's tasks.
+  
+For more detail about what the pipeline see [its documentation](https://github.com/ipardogranillo/example_ETL/blob/main/airflow/README.md)
