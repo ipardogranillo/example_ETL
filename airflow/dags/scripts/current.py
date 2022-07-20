@@ -35,8 +35,8 @@ def enrich_current(**kwargs):
             else:
                 print(f'most recent folder from {mostRecentDir}')
                 curr_df=pd.read_csv(f"{ext_path}{mostRecentDir}/data.csv")
-                curr_df["esmun_bis"] = curr_df["Cve_Ent"].astype(str) + "-" + curr_df["Cve_Mun"].astype(str)
-                trim_df = curr_df[["esmun_bis", "Value"]]
+                curr_df["esmun"] = curr_df["Cve_Ent"].astype(str) + "-" + curr_df["Cve_Mun"].astype(str)
+                trim_df = curr_df[["esmun", "Value"]]
                 print(trim_df)
                 if os.path.exists(mun_dump_path):
                     print("loading municipalities table for run time")
@@ -45,7 +45,7 @@ def enrich_current(**kwargs):
                     )
                     print(mun_df)
                     print("performing join on esmun keys")
-                    df = trim_df.merge(mun_df, how="outer", left_on="esmun_bis", right_index=True)
+                    df = trim_df.merge(mun_df, how="outer", left_on="esmun", right_on="esmun")
                     print(df)
                     table = pa.Table.from_pandas(df, preserve_index=True)
                     print(table)
